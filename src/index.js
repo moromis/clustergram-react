@@ -1,12 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+import {Clustergrammer} from "./lib"
+import axios from "axios";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends Component {
+    state = {
+        data: null
+    };
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    componentDidMount = () => {
+        axios.get('http://127.0.0.1:5000/jammit/29/29/clustergrammer/mRNA Expression')
+            .then(res => {
+                this.setState({
+                    data: res.data
+                })
+            })
+    };
+
+    render() {
+        if (this.state.data !== null) {
+            return (
+                <div>
+                    <Clustergrammer
+                        root="#clustergrammer"
+                        network_data={this.state.data}/>
+                </div>
+            )
+        } else {
+            return null
+        }
+    }
+}
+
+ReactDOM.render(<App/>, document.getElementById("root"));
