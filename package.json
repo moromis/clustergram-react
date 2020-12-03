@@ -1,5 +1,5 @@
 {
-  "name": "clustergrammer-react",
+  "name": "clustergrammer-react-widget",
   "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
@@ -14,8 +14,9 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "clustergrammer": "^1.19.5",
-    "clustergrammer-gl": "^0.9.0",
+    "clustergrammer": "1.19.5",
+    "clustergrammer-gl": "0.22.0",
+    "clustergrammer2": "0.17.0",
     "d3": "^3.5.17",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
