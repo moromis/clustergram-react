@@ -1,3 +1,3 @@
-import Clustergrammer from "./Clustergrammer";
+import Clustergrammer from './Clustergrammer'
 
-export {Clustergrammer}
+export { Clustergrammer }
