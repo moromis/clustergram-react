@@ -3,9 +3,22 @@
   "description": "A drop in widget for Clustergrammer in React",
   "version": "0.0.1",
   "license": "MIT",
-  "keywords": ["clustergrammer", "clustergram", "react", "widget", "clustering", "hierarchical", "visualization", "viz", "heatmap", "dendogram", "gene expression"],
+  "keywords": [
+    "clustergrammer",
+    "clustergram",
+    "react",
+    "widget",
+    "clustering",
+    "hierarchical",
+    "visualization",
+    "viz",
+    "heatmap",
+    "dendogram",
+    "gene expression"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "typings": "./types/clustergram-react.d.ts",
   "files": [
     "dist",
     "README.md"
@@ -45,6 +58,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
+    "@types/d3": "^7.4.0",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "axios": "^0.19.0",
     "cross-env": "^5.2.0",
