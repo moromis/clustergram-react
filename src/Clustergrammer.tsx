@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import { memoize } from "lodash";
 import React, { useEffect } from 'react';
 import { useState } from "react/cjs/react.production.min";
+import type { ClustergrammerProps } from '../types/clustergram-react';
 import "./Clustergrammer.css";
 
 const resizeContainer = (containerId: string) => {
@@ -16,11 +17,8 @@ const resizeContainer = (containerId: string) => {
         .style('height', screenHeight + 'px');
 }
 
-type ClustergrammerProps = {
-    containerId?: string
-}
-
-const Clustergrammer = ({ containerId = "cg" }: ClustergrammerProps) => {
+const Clustergrammer = (props: ClustergrammerProps) => {
+    const {root: containerId} = props;
     const [geneData, setGeneData] = useState({});
 
     const updateRowTooltip = memoize((root, symbol) => {
