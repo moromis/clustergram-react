@@ -1,11 +1,11 @@
 import axios from 'axios';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { ClustergrammerProps } from 'clustergram-react';
 import * as _Clustergrammer from 'clustergrammer';
 import * as d3 from "d3";
 import { memoize } from "lodash";
 import React, { useEffect } from 'react';
 import { useState } from "react/cjs/react.production.min";
-import type { ClustergrammerProps } from '../types/clustergram-react';
 import "./Clustergrammer.css";
 
 const resizeContainer = (containerId: string) => {
