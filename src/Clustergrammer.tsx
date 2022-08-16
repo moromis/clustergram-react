@@ -1,28 +1,26 @@
-import * as d3 from "d3";
-// eslint-disable-next-line
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-
 import axios from 'axios';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import * as _Clustergrammer from 'clustergrammer';
+import * as d3 from "d3";
 import { memoize } from "lodash";
 import React, { useEffect } from 'react';
 import { useState } from "react/cjs/react.production.min";
 import "./Clustergrammer.css";
 
-function resizeContainer(args) {
-    let screen_width = window.innerWidth * .95;
-    let screen_height = window.innerHeight * .925;
+const resizeContainer = (containerId: string) => {
+    const screenWidth = window.innerWidth * .95;
+    const screenHeight = window.innerHeight * .925;
 
-    d3.select(args.root)
-        .style('width', screen_width + 'px')
-        .style('height', screen_height + 'px');
+    d3.select(containerId)
+        .style('width', screenWidth + 'px')
+        .style('height', screenHeight + 'px');
 }
 
 type ClustergrammerProps = {
-    root?: string
+    containerId?: string
 }
 
-const Clustergrammer = ({ root = "cg" }) => {
+const Clustergrammer = ({ containerId = "cg" }) => {
     const [geneData, setGeneData] = useState({});
 
     const updateRowTooltip = memoize((root, symbol) => {
@@ -33,7 +31,7 @@ const Clustergrammer = ({ root = "cg" }) => {
             );
     });
 
-    const rowTooltipCallback = (root_id, row_data) => {
+    const rowTooltipCallback = memoize((root_id, row_data) => {
         if (geneData[row_data.name] !== undefined) {
             updateRowTooltip(root_id, row_data.name)
         } else {
@@ -47,22 +45,22 @@ const Clustergrammer = ({ root = "cg" }) => {
                     updateRowTooltip(root_id, row_data.name)
                 })
         }
-    };
+    });
 
     const draw = () => {
-        let args = {
-            row_tip_callback: rowTooltipCallback,
-            root
-        };
 
-        resizeContainer(args);
+        resizeContainer(containerId);
 
         d3.select(window).on('resize', function () {
-            resizeContainer(args);
+            resizeContainer(containerId);
             cg.resize_viz();
         });
 
-        const cg = _Clustergrammer(args);
+        const clustergrammerArgs = {
+            row_tip_callback: rowTooltipCallback,
+            root: containerId
+        };
+        const cg = _Clustergrammer(clustergrammerArgs);
         d3.select(cg.params.root + ' .loading').remove();
     };
 
@@ -72,7 +70,7 @@ const Clustergrammer = ({ root = "cg" }) => {
 
         return (
             <div className="text-center">
-                <div id={root.substring(1)}>
+                <div id={containerId.substring(1)}>
                     <h3 className='loading'>Loading...</h3>
                 </div>
             </div>
