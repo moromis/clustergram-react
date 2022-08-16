@@ -1,7 +1,8 @@
 {
-  "name": "clustergrammer-react-widget",
-  "version": "0.1.1",
+  "name": "clustergram-react",
+  "version": "0.0.1",
   "license": "MIT",
+  "keywords": ["clustergrammer", "clustergram", "react", "widget", "clustering", "hierarchical", "visualization", "viz", "heatmap", "dendogram", "gene expression"],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -10,13 +11,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mmvo91/clustergrammer-react"
+    "url": "https://github.com/moromis/clustergrammer-react"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "clustergrammer": "1.19.5",
-    "clustergrammer-gl": "0.22.0",
-    "clustergrammer2": "0.17.0",
+    "clustergrammer-gl": "^0.23.0",
+    "clustergrammer2": "^0.18.0",
     "d3": "^3.5.17",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
@@ -28,9 +29,6 @@
     "build": "cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
