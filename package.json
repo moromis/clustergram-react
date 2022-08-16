@@ -16,11 +16,10 @@
     "dendogram",
     "gene expression"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
   "typings": "./types/clustergram-react.d.ts",
   "files": [
-    "dist",
+    "src",
+    "types",
     "README.md"
   ],
   "repository": {
