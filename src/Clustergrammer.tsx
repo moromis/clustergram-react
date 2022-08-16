@@ -20,7 +20,7 @@ type ClustergrammerProps = {
     containerId?: string
 }
 
-const Clustergrammer = ({ containerId = "cg" }) => {
+const Clustergrammer = ({ containerId = "cg" }: ClustergrammerProps) => {
     const [geneData, setGeneData] = useState({});
 
     const updateRowTooltip = memoize((root, symbol) => {
