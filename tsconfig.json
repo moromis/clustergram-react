@@ -14,13 +14,13 @@
         "allowSyntheticDefaultImports": true,
         "outDir": "./dist",
         "strict": true,
-        "jsx": "react"
+        "jsx": "react",
     },
     "include": [
-        "src"
+        "src/**/*",
     ],
     "exclude": [
         "node_modules",
-        "**/__tests__/*"
+        "**/__tests__/*",
     ]
 }

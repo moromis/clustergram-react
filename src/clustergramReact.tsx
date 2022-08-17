@@ -4,19 +4,19 @@ import * as d3 from 'd3';
 import { memoize } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
-export type Opacity = 'linear' | 'log';
-export type Ordering = 'alpha' | 'clust' | 'rank' | 'rank_var';
-export type NRowSums = 'all' | string | number;
-export type Distribution = 'cos' | string;
+type Opacity = 'linear' | 'log';
+type Ordering = 'alpha' | 'clust' | 'rank' | 'rank_var';
+type NRowSums = 'all' | string | number;
+type Distribution = 'cos' | string;
 
-export type NetworkDataNode = {
+type NetworkDataNode = {
   name: string;
   clust: number;
   rank: number;
   rankvar?: number;
   group?: number[];
 };
-export type NetworkDataView = {
+type NetworkDataView = {
   N_row_sum?: NRowSums;
   dist: Distribution;
   nodes: {
@@ -24,14 +24,14 @@ export type NetworkDataView = {
     col_nodes: NetworkDataNode[];
   };
 };
-export type NetworkDataLink = {
+type NetworkDataLink = {
   source: number;
   target: number;
   value: number;
   value_up?: boolean;
   value_dn?: boolean;
 };
-export type NetworkData = {
+type NetworkData = {
   row_nodes: NetworkDataNode[];
   col_nodes: NetworkDataNode[];
   links?: NetworkDataLink[];
@@ -39,7 +39,7 @@ export type NetworkData = {
   views: NetworkDataView[];
 };
 
-export interface ClustergrammerProps {
+interface ClustergrammerProps {
   root: string;
   network_data: NetworkData;
   row_label?: string;
@@ -55,7 +55,15 @@ export interface ClustergrammerProps {
   col_order?: Ordering;
   ini_view?: string;
   about?: string;
-  row_tip_callback?: () => string;
+  row_tip_callback?: (root_id: string, row_data: NetworkDataNode) => void;
+}
+
+interface ClustergrammerGLArgs extends ClustergrammerProps {
+  container: any;
+  widget_callback?: (externalModel: any) => void;
+  network?: any;
+  viz_width?: number;
+  viz_height?: number;
 }
 
 const resizeContainer = (containerId: string) => {
@@ -67,17 +75,17 @@ const resizeContainer = (containerId: string) => {
     .style('height', screenHeight + 'px');
 };
 
-export const Clustergrammer = (props: ClustergrammerProps) => {
+export const ClustergramReact = (props: ClustergrammerProps) => {
   const { root: containerId } = props;
   const [geneData, setGeneData] = useState<Record<string, any>>({});
 
-  const updateRowTooltip = memoize((root, symbol) => {
+  const updateRowTooltip = memoize((root: string, symbol) => {
     d3.selectAll(root + '_row_tip').html(function () {
       return `<div><p>${symbol}</p><p>${geneData[symbol]}</p></div>`;
     });
   });
 
-  const rowTooltipCallback = memoize((root_id, row_data) => {
+  const rowTooltipCallback = memoize((root_id: string, row_data: NetworkDataNode) => {
     if (geneData[row_data.name] !== undefined) {
       updateRowTooltip(root_id, row_data.name);
     } else {
@@ -102,7 +110,9 @@ export const Clustergrammer = (props: ClustergrammerProps) => {
     const clustergrammerArgs = {
       row_tip_callback: rowTooltipCallback,
       root: containerId,
-    };
+      container: d3.select(containerId),
+      network_data: props.network_data
+    } as ClustergrammerGLArgs;
     const cg = clustergrammerGL(clustergrammerArgs);
     d3.select(containerId + ' .loading').remove();
   };
