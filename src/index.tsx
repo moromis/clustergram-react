@@ -104,7 +104,7 @@ export const Clustergrammer = (props: ClustergrammerProps) => {
       root: containerId,
     };
     const cg = clustergrammerGL(clustergrammerArgs);
-    d3.select(cg.params.root + ' .loading').remove();
+    d3.select(containerId + ' .loading').remove();
   };
 
   useEffect(() => {
