@@ -1,10 +1,9 @@
 import axios from 'axios';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import * as _Clustergrammer from 'clustergrammer';
 import * as d3 from 'd3';
 import { memoize } from 'lodash';
-import { useEffect, useState } from 'react';
-import './Clustergrammer.css';
+import React, { useEffect, useState } from 'react';
+
 
 export type Opacity = 'linear' | 'log';
 export type Ordering = 'alpha' | 'clust' | 'rank' | 'rank_var';
