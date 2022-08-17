@@ -1,2 +1,2 @@
-import { ClustergramReact } from "./clustergramReact";
+import { ClustergramReact } from './clustergramReact';
 export { ClustergramReact };

@@ -111,7 +111,7 @@ export const ClustergramReact = (props: ClustergrammerProps) => {
       row_tip_callback: rowTooltipCallback,
       root: containerId,
       container: d3.select(containerId),
-      network_data: props.network_data
+      network_data: props.network_data,
     } as ClustergrammerGLArgs;
     const cg = clustergrammerGL(clustergrammerArgs);
     d3.select(containerId + ' .loading').remove();
