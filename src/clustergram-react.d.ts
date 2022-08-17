@@ -53,16 +53,16 @@ interface ClustergrammerProps {
 }
 
 type ClustergrammerGLNetwork = {
-  manual_category: Record<string, string | { name: string, color: string }[]>;
+  manual_category: Record<string, string | { name: string; color: string }[]>;
   matrix_colors: {
     pos: string;
     red: string;
-  }
+  };
   order: {
     row: Ordering;
     col: Ordering;
-  }
-}
+  };
+};
 
 interface ClustergrammerGLArgs extends ClustergrammerProps {
   container: HTMLElement | null;
