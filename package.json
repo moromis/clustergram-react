@@ -3,7 +3,7 @@
   "name": "clustergram-react",
   "description": "A drop in widget for Clustergrammer in React",
   "main": "dist/index.js",
-  "types": "dist/Clustergrammer.d.ts",
+  "types": "dist/index.d.ts",
   "version": "2.0.3",
   "license": "MIT",
   "keywords": [
