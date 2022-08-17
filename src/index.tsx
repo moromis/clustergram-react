@@ -67,7 +67,7 @@ const resizeContainer = (containerId: string) => {
     .style('height', screenHeight + 'px');
 };
 
-const Clustergrammer = (props: ClustergrammerProps) => {
+export const Clustergrammer = (props: ClustergrammerProps) => {
   const { root: containerId } = props;
   const [geneData, setGeneData] = useState<Record<string, any>>({});
 
@@ -119,5 +119,3 @@ const Clustergrammer = (props: ClustergrammerProps) => {
     </div>
   );
 };
-
-export default Clustergrammer;
