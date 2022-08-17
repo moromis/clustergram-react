@@ -1,7 +1,7 @@
 {
   "name": "clustergram-react",
   "description": "A drop in widget for Clustergrammer in React",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "clustergrammer",
