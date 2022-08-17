@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 import { memoize } from 'lodash';
 import React, { useEffect, useState } from 'react';
 
-
 export type Opacity = 'linear' | 'log';
 export type Ordering = 'alpha' | 'clust' | 'rank' | 'rank_var';
 export type NRowSums = 'all' | string | number;
