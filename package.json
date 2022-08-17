@@ -4,7 +4,7 @@
   "description": "A drop in widget for Clustergrammer in React",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "keywords": [
     "clustergrammer",
