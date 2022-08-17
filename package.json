@@ -4,7 +4,7 @@
   "description": "A drop in widget for Clustergrammer in React",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "keywords": [
     "clustergrammer",
@@ -40,7 +40,7 @@
     "start": "react-scripts start",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
