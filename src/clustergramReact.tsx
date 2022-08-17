@@ -59,7 +59,7 @@ interface ClustergrammerProps {
 }
 
 interface ClustergrammerGLArgs extends ClustergrammerProps {
-  container: any;
+  container: HTMLElement | null;
   widget_callback?: (externalModel: any) => void;
   network?: any;
   viz_width?: number;
@@ -75,8 +75,8 @@ const resizeContainer = (containerId: string) => {
     .style('height', screenHeight + 'px');
 };
 
-export const ClustergramReact = (props: ClustergrammerProps) => {
-  const { root: containerId } = props;
+export const ClustergramReact = (props: ClustergrammerGLArgs) => {
+  const { root: containerId, container } = props;
   const [geneData, setGeneData] = useState<Record<string, any>>({});
 
   const updateRowTooltip = memoize((root: string, symbol) => {
@@ -110,7 +110,7 @@ export const ClustergramReact = (props: ClustergrammerProps) => {
     const clustergrammerArgs = {
       row_tip_callback: rowTooltipCallback,
       root: containerId,
-      container: d3.select(containerId),
+      container: container,
       network_data: props.network_data,
     } as ClustergrammerGLArgs;
     const cg = clustergrammerGL(clustergrammerArgs);

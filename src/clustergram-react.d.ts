@@ -52,10 +52,22 @@ interface ClustergrammerProps {
   row_tip_callback?: (root_id: string, row_data: NetworkDataNode) => void;
 }
 
+type ClustergrammerGLNetwork = {
+  manual_category: Record<string, string | { name: string, color: string }[]>;
+  matrix_colors: {
+    pos: string;
+    red: string;
+  }
+  order: {
+    row: Ordering;
+    col: Ordering;
+  }
+}
+
 interface ClustergrammerGLArgs extends ClustergrammerProps {
-  container: any;
+  container: HTMLElement | null;
   widget_callback?: (externalModel: any) => void;
-  network?: any;
+  network?: ClustergrammerGLNetwork;
   viz_width?: number;
   viz_height?: number;
 }
