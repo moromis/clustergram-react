@@ -30,7 +30,7 @@ declare module "clustergram-react" {
     row_nodes: NetworkDataNode[];
     col_nodes: NetworkDataNode[];
     links?: NetworkDataLink[];
-    mat?: [number, number][];
+    mat?: number[][];
     views: NetworkDataView[];
   };
 
