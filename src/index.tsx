@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as _Clustergrammer from 'clustergrammer';
+import clustergrammerGL from 'clustergrammer-gl';
 import * as d3 from 'd3';
 import { memoize } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -103,7 +103,7 @@ export const Clustergrammer = (props: ClustergrammerProps) => {
       row_tip_callback: rowTooltipCallback,
       root: containerId,
     };
-    const cg = _Clustergrammer(clustergrammerArgs);
+    const cg = clustergrammerGL(clustergrammerArgs);
     d3.select(cg.params.root + ' .loading').remove();
   };
 

@@ -27,7 +27,6 @@
     "url": "https://github.com/moromis/clustergram-react"
   },
   "dependencies": {
-    "clustergrammer": "1.19.5",
     "clustergrammer-gl": "^0.23.0",
     "clustergrammer2": "^0.18.0",
     "d3": "^7.6.1",
